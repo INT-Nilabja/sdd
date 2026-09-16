@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gate Review Dashboard — Design Template</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --panel: #ffffff;
+    --border: #e2e5ea;
+    --text: #1c2126;
+    --muted: #6b7280;
+    --approved: #1a7f37;
+    --approved-bg: #e6f4ea;
+    --pending: #9a6700;
+    --pending-bg: #fff3cd;
+    --rejected: #b3261e;
+    --rejected-bg: #fde8e8;
+    --accent: #2f6fed;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+  }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .stat-card .label { font-size: 12px; color: var(--muted); }
+  .stat-card .value { font-size: 24px; font-weight: 600; margin-top: 4px; }
+  .section {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; }
+  tr:last-child td { border-bottom: none; }
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge.approved { background: var(--approved-bg); color: var(--approved); }
+  .badge.pending  { background: var(--pending-bg); color: var(--pending); }
+  .badge.rejected { background: var(--rejected-bg); color: var(--rejected); }
+  .spec-id { font-family: Consolas, monospace; font-size: 12px; color: var(--accent); }
+  .comment { color: var(--muted); font-style: italic; }
+  .gate-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dot.approved { background: var(--approved); }
+  .dot.pending { background: var(--pending); }
+  .dot.rejected { background: var(--rejected); }
+</style>
+</head>
+<body>
+
+  <h1>Gate Review Dashboard</h1>
+  <div class="subtitle">Design reference — active specs, Gate 1 / Gate 2 status, approval comments, and compliance checks</div>
+
+  <div class="grid">
+    <div class="stat-card">
+      <div class="label">Active Specs</div>
+      <div class="value">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Pending Gate 1</div>
+      <div class="value">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Pending Gate 2</div>
+      <div class="value">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Ready for Release</div>
+      <div class="value">0</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">Active Specs &amp; Gate Status</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Spec ID</th>
+          <th>Feature</th>
+          <th>Status</th>
+          <th>Gate 1</th>
+          <th>Gate 2</th>
+          <th>Latest Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="spec-id">&lt;feature-slug&gt;</td>
+          <td>&lt;Feature Name&gt;</td>
+          <td><span class="badge pending">In Peer Review</span></td>
+          <td><span class="gate-pill"><span class="dot pending"></span>Pending</span></td>
+          <td><span class="gate-pill"><span class="dot pending"></span>Not Started</span></td>
+          <td class="comment">"&lt;Latest reviewer comment&gt;"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-header">Recent Gate Approvals</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Spec ID</th>
+          <th>Gate</th>
+          <th>Reviewer</th>
+          <th>Date/Time</th>
+          <th>Outcome</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="spec-id">&lt;feature-slug&gt;</td>
+          <td>Gate 1 (Spec Review)</td>
+          <td>&lt;Reviewer Name&gt;</td>
+          <td>YYYY-MM-DD HH:MM:SS</td>
+          <td><span class="badge approved">Approved</span></td>
+          <td class="comment">"&lt;Approval comment&gt;"</td>
+        </tr>
+        <tr>
+          <td class="spec-id">&lt;feature-slug&gt;</td>
+          <td>Gate 2 (Code Review)</td>
+          <td>&lt;Reviewer Name&gt;</td>
+          <td>YYYY-MM-DD HH:MM:SS</td>
+          <td><span class="badge rejected">Changes Requested</span></td>
+          <td class="comment">"&lt;Requested changes summary&gt;"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-header">Compliance Checks</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>Status</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Constitution alignment (testing / security / architecture)</td>
+          <td><span class="badge approved">Pass</span></td>
+          <td class="comment">&lt;Notes&gt;</td>
+        </tr>
+        <tr>
+          <td>No open Sev-1/Sev-2 blocking incidents</td>
+          <td><span class="badge pending">Review</span></td>
+          <td class="comment">&lt;Notes&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

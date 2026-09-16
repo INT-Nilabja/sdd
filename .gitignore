@@ -34,3 +34,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# OS files
+Thumbs.db
+
+# logs & temporary files
+scratch/
+*.log
+
+# CRITICAL: DO NOT IGNORE INT CONTROL PLANE OR KNOWLEDGE BASE
+!.agent/
+!.ai-context/
+!.agents/
+!AGENTS.md
